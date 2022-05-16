@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 /.pnp
+/.history
+/*.yml
 .pnp.js
 
 # testing
