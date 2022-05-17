@@ -8,12 +8,21 @@ const App: React.FC = () => {
   };
 
   const { numero, setNumero } = React.useContext<ConstextType>(NossoContexto);
+  const MyRef = React.useRef<HTMLInputElement>(null);
 
   const handleclick = () => {
     return setNumero(numero + 1);
   };
   const handleClear = () => {
     return setNumero(0);
+  };
+
+  const getRef = () => {
+    let myData = MyRef.current?.valueAsNumber;
+    if (!myData) myData = 0;
+    myData = myData * 5;
+    console.info("-----", myData);
+    return;
   };
 
   return (
@@ -23,6 +32,8 @@ const App: React.FC = () => {
       </div>
       <button onClick={handleclick}> + 1</button>
       <button onClick={handleClear}> Clear</button>
+      Input: <input type="number" defaultValue="100" ref={MyRef} />
+      <button onClick={getRef}> Get Ref</button>
     </div>
   );
 };
